@@ -93,6 +93,7 @@ let cartList = document.querySelector(".cart__list");
 let productSave = document.querySelector(".product__save");
 let array = [];
 
+
 // Products array rendering 
 function renderList(arr) {
   list.innerHTML = "";
@@ -271,9 +272,9 @@ const addCart = (id) => {
 // Render cart
 const renderCart = () => {
   const cartList = document.querySelector(".cart__list");
-  cartList.innerHTML = ""; // Clear the current cart list
+  cartList.innerHTML = ""; 
 
-  let totalSum = 0; // Variable to calculate the total price
+  let totalSum = 0; 
 
   array.forEach((item) => {
     const product = products.find(
@@ -288,7 +289,9 @@ const renderCart = () => {
         "gap-4",
         "items-center",
         "border-b",
-        "pb-4"
+        "pb-4",
+        "transition-all",
+        "duration-300"
       );
 
       li.innerHTML = `
@@ -313,7 +316,6 @@ const renderCart = () => {
         <span class="flex-1 text-right">Total: $${
           product.price * item.count
         }</span>
-        v
       </div>
       `;
 
@@ -348,7 +350,7 @@ const renderCart = () => {
     0
   );
 
-  // Add event listeners for increment and decrement buttons
+  
   const incrementButtons = document.querySelectorAll(".increment");
   const decrementButtons = document.querySelectorAll(".decrement");
 
@@ -389,13 +391,12 @@ const updateCartItem = (id, action) => {
       cartItem.count -= 1;
       product.number += 1;
     } else {
-      // Remove item if quantity is 1 and decrement is clicked
       array = array.filter((item) => item.product_id !== id);
       product.number += 1;
     }
   }
 
-  renderCart(); // Update the cart
-  renderList(products); // Update the product list
+  renderCart();
+  renderList(products); 
 };
 // Update cart item for inc and dec done
